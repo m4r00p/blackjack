@@ -76,11 +76,15 @@ export class AppComponent {
   activatePlayer(player: Player) {
     this.activePlayer = player;
 
+    const activePlayerComponent = this.playerComponents.find(component => component.player === this.activePlayer)
+
     if (this.activePlayer.human === true) {
+      let numberOfInitialCards = 2
+      while (numberOfInitialCards--) {
+        this.hit(this.activePlayer, activePlayerComponent.offset())
+      }
       return
     }
-
-    const activePlayerComponent = this.playerComponents.find(component => component.player === this.activePlayer)
 
     while (this.activePlayer.computeSum() < 15) {
       this.hit(this.activePlayer, activePlayerComponent.offset())
