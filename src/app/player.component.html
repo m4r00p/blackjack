@@ -1,0 +1,8 @@
+<div class="player">
+  {{player.name}}: {{player.sum}}
+  <div class="hand"></div>
+  <div *ngIf="player.human">
+    <button md-raised-button (click)="hit()" [disabled]="player.stand === true">Hit</button>
+    <button md-raised-button (click)="stand()" [disabled]="player.stand === true">Stand</button>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.player {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.player .hand {
+  height: 130px;
+}
