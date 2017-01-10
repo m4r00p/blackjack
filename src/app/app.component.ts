@@ -24,7 +24,7 @@ export class AppComponent {
   activePlayer = this.players[0];
 
   constructor(public dialog: MdDialog) {
-    this.players.push(new Player(this.id++, 'Computer', [], false, false))
+    this.players.push(new Player(this.id++, 'Computer ' + this.id, [], false, false))
   }
 
   ngAfterViewInit() {
@@ -86,12 +86,23 @@ export class AppComponent {
     this.activateNextPlayer(player);
   }
 
+  findWinner() {
+    const playersLessThanEqual21 = this.players.filter(player => player.sum <= 21)
+    if (playersLessThanEqual21.length > 0) {
+      return playersLessThanEqual21.sort((a, b) => b.sum - a.sum)[0]
+    } else {
+      return this.players.sort((a, b) => a.sum - b.sum)[0]
+    }
+  }
+
   activateNextPlayer(player) {
     const index = this.players.indexOf(player) + 1
     const next = this.players[index]
 
     if (!next) {
-      alert('Game Over!')
+      setTimeout(() => {
+        alert('Game Over! \n The winner is: ' + this.findWinner().name)
+      }, 1000)
       return
     }
 
@@ -103,6 +114,6 @@ export class AppComponent {
   }
 
   addPlayer(human: boolean) {
-    this.players.push(new Player(this.id++, (human ? 'Human' : 'Computer'), [], human, false))
+    this.players.push(new Player(this.id++, (human ? 'Human ' : 'Computer ') + this.id, [], human, false))
   }
 }
