@@ -60,7 +60,10 @@ export class AppComponent {
       y: offset.top - offsetDeck.top + card.$el.offsetHeight,
       onComplete: () => {
         card.setSide('front');
-        player.computeSum();
+        const sum = player.computeSum();
+        if (sum > 21) {
+          this.activateNextPlayer(player)
+        }
       }
     })
   }
