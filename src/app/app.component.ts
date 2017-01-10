@@ -62,7 +62,7 @@ export class AppComponent {
         card.setSide('front');
         const sum = player.computeSum();
         if (sum > 21) {
-          this.activateNextPlayer(player)
+          this.onStand(player);
         }
       }
     })
