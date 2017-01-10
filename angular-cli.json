@@ -18,9 +18,12 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
+        "vendors/deck-of-cards/example/example.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "vendors/deck-of-cards/dist/deck.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
