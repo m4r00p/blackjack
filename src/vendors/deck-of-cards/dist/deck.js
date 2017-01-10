@@ -977,3 +977,5 @@ var Deck = (function () {
 
   return Deck;
 })();
+
+window.Deck = Deck;
