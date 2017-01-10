@@ -38,15 +38,7 @@ export class AppComponent {
       card.setSide('back')
     })
     this.deck.shuffle()
-    this.players.forEach(player => {
-      let card = player.hand.shift();
-      while (card) {
-        card.unmount();
-        card = player.hand.shift();
-      }
-      player.hand = [];
-      player.stand = false;
-    })
+    this.players.forEach(player => player.reset())
   }
 
   shuffle() {
